@@ -1,0 +1,39 @@
+# java
+.settings/
+.classpath
+.project
+target/
+
+# python
+.venv/
+.mypy_cache/
+__pycache__/
+
+# vscode
+.vscode/
+
+### STS ###
+HELP.md
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.apt_generated
+.factorypath
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
