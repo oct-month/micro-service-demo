@@ -1,0 +1,18 @@
+server:
+  name: user-edge-service
+  port: 4041
+
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: redis
+    timeout: 3000
+
+thrift:
+  user:
+    ip: 127.0.0.1
+    port: 4040
+  message:
+    ip: 127.0.0.1
+    port: 6060
