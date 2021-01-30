@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@DubboService(version = "1.0.0")
+@DubboService
 public class CourseServiceImpl implements ICourseService
 {
 	@Autowired

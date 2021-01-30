@@ -19,6 +19,6 @@ public interface UserMapper
     @Insert("insert into pe_user(username, password, real_name, mobile, email) values(#{u.username}, #{u.password}, #{u.realName}, #{u.mobile}, #{u.email})")
     void registerUser(@Param("u") UserInfo userInfo);
 
-    @Select("select id, username, password, real_name as realName, mobile, email, introduction, description from pe_user left join pe_teacher on id=user_id where id=#{id}")
+    @Select("select id, username, password, real_name as realName, mobile, email, introduction, stars from pe_user left join pe_teacher on id=user_id where id=#{id}")
     UserInfo getTeacherById(@Param("id") int id);
 }

@@ -61,14 +61,14 @@ public abstract class LoginFilter implements Filter
 		}
 		if (userInfo == null)
 		{
-			response.sendRedirect("http://127.0.0.1:/4041/user/login");
+			response.sendRedirect("http://localhost:8080/user/login");
 			return;
 		}
 		login(request, response, userInfo);
 		filterChain.doFilter(request, response);
 	}
 
-	protected abstract void login(HttpServletRequest request, HttpServletResponse response, UserDTO userInfo);
+	protected abstract void login(HttpServletRequest request, HttpServletResponse response, UserDTO userDTO);
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException

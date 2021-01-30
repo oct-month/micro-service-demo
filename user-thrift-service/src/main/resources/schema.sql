@@ -17,7 +17,7 @@ COLLATE=utf8mb4_general_ci;
 CREATE TABLE IF NOT EXISTS pe_teacher (
 	user_id INT NOT NULL,
 	introduction varchar(64) NULL,
-	description varchar(512) NULL,
+	stars int UNSIGNED NULL,
 	CONSTRAINT pe_teacher_PK PRIMARY KEY (user_id),
 	CONSTRAINT pe_teacher_FK FOREIGN KEY (user_id) REFERENCES pe_user(id) ON DELETE CASCADE ON UPDATE CASCADE
 )

@@ -18,7 +18,7 @@ import cn.sun.user.api.UserService;
 @Configuration
 public class ThriftServer
 {
-    @Value("${service.port}")
+    @Value("${server.port}")
     private int servicePort;
     @Autowired
     private UserService.Iface userService;

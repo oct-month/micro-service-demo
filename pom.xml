@@ -23,6 +23,7 @@
     <module>user-edge-service-client</module>
     <module>course-dubbo-service</module>
     <module>course-edge-service</module>
+    <module>api-gateway-zuul</module>
   </modules>
 
   <dependencies>

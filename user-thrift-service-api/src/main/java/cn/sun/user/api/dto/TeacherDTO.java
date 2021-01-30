@@ -8,5 +8,20 @@ import lombok.Setter;
 public class TeacherDTO extends UserDTO
 {
 	private String introduction;
-	private String description;
+	private int stars;
+
+	@Override
+	public String toString()
+	{
+		return "TeacherDTO{" +
+				"introduction='" + introduction + '\'' +
+				", stars='" + stars + '\'' +
+				", id=" + id +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", realName='" + realName + '\'' +
+				", mobile='" + mobile + '\'' +
+				", email='" + email + '\'' +
+				'}';
+	}
 }
