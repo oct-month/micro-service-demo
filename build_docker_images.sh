@@ -1,13 +1,7 @@
+# 构建docker镜像
 mvn package -Dmaven.test.skip=true
 
 WORKDIR=`pwd`
-export MYSQL_ADDRESS=172.30.32.1            # mysql的ip
-export ZOOKEEPER_ADDRESS=172.30.32.1        # zookeeper的ip
-export REDIS_ADDRESS=172.30.32.1            # redis的ip
-export NETWORK=micro-service-demo-network   # 用于container之间相互通信的桥接网络名
-
-# 创建桥接网络
-docker network create --driver bridge $NETWORK
 
 # message-service
 cd $WORKDIR/message-thrift-service/

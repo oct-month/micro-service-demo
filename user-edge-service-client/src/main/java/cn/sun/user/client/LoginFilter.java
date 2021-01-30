@@ -84,7 +84,7 @@ public abstract class LoginFilter implements Filter
 
 	private UserDTO requestUserInfo(String token)
 	{
-		String url = "http://localhost:4041/user/authentication";
+		String url = "http://user-edge-service:4041/user/authentication";
 		HttpClient client = HttpClients.createDefault();
 		HttpPost post = new HttpPost(url);
 		post.addHeader("token", token);

@@ -1,0 +1,78 @@
+version: '3.8'
+
+networks:
+  micro-service-demo-network:
+    driver: bridge
+    external: false
+
+services:
+
+  message-service:
+    build: ./message-thrift-service/
+    image: sun/message-service:1.0
+    container_name: message-service
+    restart: on-failure
+    networks: 
+      - micro-service-demo-network
+
+  user-service:
+    build: ./user-thrift-service/
+    image: sun/user-service:1.0
+    container_name: user-service
+    restart: on-failure
+    networks: 
+      - micro-service-demo-network
+    command:
+      - "--mysql.address=172.30.35.54"
+
+  user-edge-service:
+    build: ./user-edge-service/
+    image: sun/user-edge-service:1.0
+    container_name: user-edge-service
+    restart: on-failure
+    networks: 
+      - micro-service-demo-network
+    depends_on: 
+      - user-service
+      - message-service
+    command: 
+      - "--redis.address=172.30.35.54"
+
+  course-service:
+    build: ./course-dubbo-service/
+    image: sun/course-service:1.0
+    container_name: course-service
+    restart: on-failure
+    networks: 
+      - micro-service-demo-network
+    depends_on:
+      - user-service
+    command:
+      - "--mysql.address=172.30.35.54"
+      - "--zookeeper.address=172.30.35.54"
+
+  course-edge-service:
+    build: ./course-edge-service/
+    image: sun/course-edge-service:1.0
+    container_name: course-edge-service
+    restart: on-failure
+    networks: 
+      - micro-service-demo-network
+    depends_on: 
+      - course-service
+      - user-edge-service
+    command: 
+      - "--zookeeper.address=172.30.35.54"
+
+  api-gateway:
+    build: ./api-gateway-zuul/
+    image: sun/api-gateway:1.0
+    container_name: api-gateway
+    restart: on-failure
+    networks: 
+      - micro-service-demo-network
+    depends_on: 
+      - user-edge-service
+      - course-edge-service
+    ports: 
+      - "8080:8080"
