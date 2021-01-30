@@ -38,10 +38,11 @@ class MessageServiceHandle(MessageService.Iface):
 
 
 if __name__ == "__main__":
+    print("这里是message service，服务开始启动")
     handler = MessageServiceHandle()
     processor = MessageService.Processor(handler)
 
-    transport = TSocket.TServerSocket("127.0.0.1", 6060)
+    transport = TSocket.TServerSocket(None, 6060)
     tfactory = TTransport.TFramedTransportFactory()
     pfactory = TBinaryProtocol.TBinaryProtocolFactory()
 

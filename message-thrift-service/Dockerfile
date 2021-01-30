@@ -5,4 +5,4 @@ WORKDIR /message-service
 COPY ./ /message-service/
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt 
 
-ENTRYPOINT [ "python", "message-service.py" ]
+ENTRYPOINT [ "python3", "message-service.py" ]
