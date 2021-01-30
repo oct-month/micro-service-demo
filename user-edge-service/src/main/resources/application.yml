@@ -4,15 +4,15 @@ server:
 
 spring:
   redis:
-    host: 127.0.0.1
+    host: ${redis.address}
     port: 6379
     password: redis
     timeout: 3000
 
 thrift:
   user:
-    ip: 127.0.0.1
+    ip: user-service
     port: 4040
   message:
-    ip: 127.0.0.1
+    ip: message-service
     port: 6060

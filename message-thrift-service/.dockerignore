@@ -1,0 +1,7 @@
+.idea/
+thrift/
+*.sh
+*.iml
+.dockerignore
+Dockerfile
+Pipfile*

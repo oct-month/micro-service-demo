@@ -6,10 +6,10 @@ spring:
     gateway:
       routes:
         - id: course_route
-          uri: http://localhost:5051/course/
+          uri: http://course-edge-service:5051/course/
           predicates:
             - Path=/course/**
         - id: user_route
-          uri: http://localhost:4041/user/
+          uri: http://user-edge-service:4041/user/
           predicates:
             - Path=/user/**
