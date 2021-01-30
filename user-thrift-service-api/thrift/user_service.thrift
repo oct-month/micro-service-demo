@@ -1,4 +1,4 @@
-namespace java cn.sun.thrift.user
+namespace java cn.sun.user.api
 
 struct UserInfo {
     1:i32 id,
@@ -6,11 +6,14 @@ struct UserInfo {
     3:string password,
     4:string realName,
     5:string mobile,
-    6:string email
+    6:string email,
+    7:string introduction;
+    8:i32 stars;
 }
 
 service UserService {
     UserInfo getUserById(1:i32 id);
     UserInfo getUserByName(1:string username);
+    UserInfo getTeacherById(1:i32 id);
     void registerUser(1:UserInfo userInfo);
 }

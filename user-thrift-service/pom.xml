@@ -14,13 +14,13 @@
 		<relativePath />
 	</parent> -->
 
-	<groupId>cn.sun.thrift</groupId>
+	<groupId>cn.sun.user</groupId>
 	<artifactId>user-thrift-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>user-thrift-service</name>
 	<description>用户服务的SpringBoot实现</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 
 	<dependencies>
@@ -47,7 +47,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>cn.sun.thrift</groupId>
+			<groupId>cn.sun.user</groupId>
 			<artifactId>user-thrift-service-api</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>

@@ -1,4 +1,4 @@
-namespace java cn.sun.thrift.message
+namespace java cn.sun.message.api
 namespace py message.api
 
 service MessageService {

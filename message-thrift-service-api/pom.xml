@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <groupId>cn.sun.thrift</groupId>
+  <groupId>cn.sun.message</groupId>
   <artifactId>message-thrift-service-api</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>

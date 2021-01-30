@@ -9,11 +9,16 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <groupId>cn.sun.thrift</groupId>
+  <groupId>cn.sun.user</groupId>
   <artifactId>user-thrift-service-api</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
     <dependency>
       <groupId>org.apache.thrift</groupId>
       <artifactId>libthrift</artifactId>

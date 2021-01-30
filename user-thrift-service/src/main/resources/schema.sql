@@ -1,8 +1,8 @@
---CREATE DATABASE IF NOT EXISTS db_user;
+--CREATE DATABASE IF NOT EXISTS db_user DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci;
 --USE db_user;
 
 CREATE TABLE IF NOT EXISTS pe_user (
-	id INT UNSIGNED auto_increment NOT NULL,
+	id INT auto_increment NOT NULL,
 	username varchar(32) NOT NULL,
 	password varchar(32) NOT NULL,
 	real_name varchar(32) NULL,
@@ -12,4 +12,15 @@ CREATE TABLE IF NOT EXISTS pe_user (
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
-COLLATE=utf8mb4_0900_ai_ci;
+COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS pe_teacher (
+	user_id INT NOT NULL,
+	introduction varchar(64) NULL,
+	description varchar(512) NULL,
+	CONSTRAINT pe_teacher_PK PRIMARY KEY (user_id),
+	CONSTRAINT pe_teacher_FK FOREIGN KEY (user_id) REFERENCES pe_user(id) ON DELETE CASCADE ON UPDATE CASCADE
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_general_ci;
