@@ -9,7 +9,7 @@ services:
 
   message-service:
     build: ./message-thrift-service/
-    image: sun/message-service:1.0
+    image: sun/message-service:latest
     container_name: message-service
     restart: on-failure
     networks: 
@@ -19,7 +19,7 @@ services:
 
   user-service:
     build: ./user-thrift-service/
-    image: sun/user-service:1.0
+    image: sun/user-service:latest
     container_name: user-service
     restart: on-failure
     networks: 
@@ -29,7 +29,7 @@ services:
 
   user-edge-service:
     build: ./user-edge-service/
-    image: sun/user-edge-service:1.0
+    image: sun/user-edge-service:latest
     container_name: user-edge-service
     restart: on-failure
     networks: 
@@ -42,7 +42,7 @@ services:
 
   course-service:
     build: ./course-dubbo-service/
-    image: sun/course-service:1.0
+    image: sun/course-service:latest
     container_name: course-service
     restart: on-failure
     networks: 
@@ -55,7 +55,7 @@ services:
 
   course-edge-service:
     build: ./course-edge-service/
-    image: sun/course-edge-service:1.0
+    image: sun/course-edge-service:latest
     container_name: course-edge-service
     restart: on-failure
     networks: 
@@ -68,7 +68,7 @@ services:
 
   api-gateway:
     build: ./api-gateway-zuul/
-    image: sun/api-gateway:1.0
+    image: sun/api-gateway:latest
     container_name: api-gateway
     restart: on-failure
     networks: 
