@@ -1,9 +1,8 @@
-version: "3.4"
+version: "3.8"
 
 networks:
   default:
     driver: overlay
-    name: micro-overlay
     external: false
       # name: micro-overlay
 
@@ -11,7 +10,6 @@ networks:
 services:
 
   message-service:
-    build: ./message-thrift-service/
     image: sun/message-service:latest
     deploy:
       endpoint_mode: dnsrr
@@ -26,7 +24,6 @@ services:
       PYTHONUNBUFFERED: 1
 
   user-service:
-    build: ./user-thrift-service/
     image: sun/user-service:latest
     deploy:
       endpoint_mode: dnsrr
@@ -41,7 +38,6 @@ services:
       - "--mysql.address=172.24.137.158"
 
   user-edge-service:
-    build: ./user-edge-service/
     image: sun/user-edge-service:latest
     deploy:
       endpoint_mode: vip
@@ -61,7 +57,6 @@ services:
       - "--redis.address=172.24.137.158"
 
   course-service:
-    build: ./course-dubbo-service/
     image: sun/course-service:latest
     deploy:
       endpoint_mode: dnsrr
@@ -79,7 +74,6 @@ services:
       - "--zookeeper.address=172.24.137.158"
 
   course-edge-service:
-    build: ./course-edge-service/
     image: sun/course-edge-service:latest
     deploy:
       endpoint_mode: vip
@@ -99,7 +93,6 @@ services:
       - "--zookeeper.address=172.24.137.158"
 
   api-gateway:
-    build: ./api-gateway-zuul/
     image: sun/api-gateway:latest
     deploy:
       endpoint_mode: vip

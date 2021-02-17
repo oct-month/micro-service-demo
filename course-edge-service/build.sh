@@ -1,1 +1,1 @@
-docker build -t sun/course-edge-service:1.0 .
+docker build -t sun/course-edge-service:latest .

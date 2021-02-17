@@ -1,1 +1,1 @@
-docker build -t sun/user-service:1.0 .
+docker build -t sun/user-service:latest .

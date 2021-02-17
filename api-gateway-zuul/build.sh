@@ -1,1 +1,1 @@
-docker build -t sun/api-gateway:1.0 .
+docker build -t sun/api-gateway:latest .

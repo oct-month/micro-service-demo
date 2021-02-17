@@ -1,1 +1,1 @@
-docker build -t sun/course-service:1.0 .
+docker build -t sun/course-service:latest .

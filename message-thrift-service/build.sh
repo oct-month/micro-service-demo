@@ -1,1 +1,1 @@
-docker build -t sun/message-service:1.0 .
+docker build -t sun/message-service:latest .

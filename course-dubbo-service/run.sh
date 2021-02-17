@@ -1,1 +1,1 @@
-docker run --network $NETWORK --name course-service -d sun/course-service:1.0 --mysql.address=$MYSQL_ADDRESS --zookeeper.address=$ZOOKEEPER_ADDRESS
+docker run --network $NETWORK --name course-service -d sun/course-service:latest --mysql.address=$MYSQL_ADDRESS --zookeeper.address=$ZOOKEEPER_ADDRESS
