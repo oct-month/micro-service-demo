@@ -28,3 +28,7 @@
 - 课程EdgeService -- 5051端口
 - API GateWay -- 8080端口
 
+# 部署前
+
+* 建好 db_user db_course 数据库
+
