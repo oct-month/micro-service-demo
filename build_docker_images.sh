@@ -1,4 +1,5 @@
 # 构建docker镜像
+mvn clean
 mvn package -Dmaven.test.skip=true
 
 WORKDIR=`pwd`

@@ -1,4 +1,4 @@
-FROM openjdk:8u282-jre-buster
+FROM openjdk:8-jre-alpine
 LABEL maintainer="sun oct-month@qq.com"
 
 WORKDIR /api-gateway

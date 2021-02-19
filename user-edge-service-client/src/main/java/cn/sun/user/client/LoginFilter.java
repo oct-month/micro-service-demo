@@ -61,7 +61,7 @@ public abstract class LoginFilter implements Filter
 		}
 		if (userInfo == null)
 		{
-			response.sendRedirect("http://localhost:8080/user/login");
+			response.sendRedirect("http://local.oct-month.top/user/login");
 			return;
 		}
 		login(request, response, userInfo);

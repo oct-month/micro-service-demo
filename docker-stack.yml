@@ -10,21 +10,21 @@ networks:
 services:
 
   message-service:
-    image: sun/message-service:latest
+    image: localhost/micro-service/message-service:latest
     deploy:
       endpoint_mode: dnsrr
-      replicas: 1
+      replicas: 2
       restart_policy:
         condition: on-failure
       resources:
         limits:
           cpus: "0.2"
           memory: "128M"
-    environment: 
+    environment:
       PYTHONUNBUFFERED: 1
 
   user-service:
-    image: sun/user-service:latest
+    image: localhost/micro-service/user-service:latest
     deploy:
       endpoint_mode: dnsrr
       replicas: 1
@@ -33,31 +33,12 @@ services:
       resources:
         limits:
           cpus: "0.2"
-          memory: "512M"
+          memory: "256M"
     command:
-      - "--mysql.address=172.24.137.158"
+      - "--mysql.address=192.168.142.1"
 
   user-edge-service:
-    image: sun/user-edge-service:latest
-    deploy:
-      endpoint_mode: vip
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-      resources:
-        limits:
-          cpus: "0.2"
-          memory: "512M"
-    ports:
-      - "8082:4041"
-    depends_on: 
-      - user-service
-      - message-service
-    command: 
-      - "--redis.address=172.24.137.158"
-
-  course-service:
-    image: sun/course-service:latest
+    image: localhost/micro-service/user-edge-service:latest
     deploy:
       endpoint_mode: dnsrr
       replicas: 1
@@ -66,34 +47,56 @@ services:
       resources:
         limits:
           cpus: "0.2"
-          memory: "512M"
+          memory: "256M"
+    depends_on:
+      - user-service
+      - message-service
+    command:
+      - "--redis.address=192.168.142.1"
+
+  course-service:
+    image: localhost/micro-service/course-service:latest
+    deploy:
+      endpoint_mode: dnsrr
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: "256M"
     depends_on:
       - user-service
     command:
-      - "--mysql.address=172.24.137.158"
-      - "--zookeeper.address=172.24.137.158"
+      - "--mysql.address=192.168.142.1"
+      - "--zookeeper.address=192.168.142.1"
 
   course-edge-service:
-    image: sun/course-edge-service:latest
+    image: localhost/micro-service/course-edge-service:latest
     deploy:
-      endpoint_mode: vip
+      endpoint_mode: dnsrr
       replicas: 1
       restart_policy:
         condition: on-failure
       resources:
         limits:
           cpus: "0.2"
-          memory: "512M"
-    ports:
-      - "8081:5051"
-    depends_on: 
+          memory: "256M"
+      placement:
+        constraints: [ node.role == manager ]
+    healthcheck:
+        test: ["CMD", "wget", "-S", "http://localhost:5051/"]
+        interval: 60s
+        timeout: 10s
+        retries: 3
+    depends_on:
       - course-service
       - user-edge-service
-    command: 
-      - "--zookeeper.address=172.24.137.158"
+    command:
+      - "--zookeeper.address=192.168.142.1"
 
   api-gateway:
-    image: sun/api-gateway:latest
+    image: localhost/micro-service/api-gateway:latest
     deploy:
       endpoint_mode: vip
       replicas: 1
@@ -102,9 +105,9 @@ services:
       resources:
         limits:
           cpus: "0.2"
-          memory: "512M"
+          memory: "256M"
     ports:
       - "8080:8080"
-    depends_on: 
+    depends_on:
       - user-edge-service
       - course-edge-service
